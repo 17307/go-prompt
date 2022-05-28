@@ -185,8 +185,8 @@ func (r *Render) Render(buffer *Buffer, completion *CompletionManager) {
 
 	h := y + 1 + int(completion.max)
 	if h > int(r.row) || completionMargin > int(r.col) {
-		r.renderWindowTooSmall()
-		return
+		// r.renderWindowTooSmall()
+		// return
 	}
 
 	// Rendering
