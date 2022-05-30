@@ -135,14 +135,38 @@ func (r *Render) renderCompletion(buf *Buffer, completions *CompletionManager) {
 		if i == selected {
 			r.out.SetColor(r.selectedSuggestionTextColor, r.selectedSuggestionBGColor, true)
 		} else {
-			r.out.SetColor(r.suggestionTextColor, r.suggestionBGColor, false)
+			// r.out.SetColor(r.suggestionTextColor, r.suggestionBGColor, false)
+			var suggestionTextColor, suggestionBGColor Color
+			if suggestions[i].SuggestionTextColor != 0 {
+				suggestionTextColor = suggestions[i].SuggestionTextColor
+			} else {
+				suggestionTextColor = r.suggestionTextColor
+			}
+			if suggestions[i].SuggestionBGColor != 0 {
+				suggestionBGColor = suggestions[i].SuggestionBGColor
+			} else {
+				suggestionBGColor = r.suggestionBGColor
+			}
+			r.out.SetColor(suggestionTextColor, suggestionBGColor, false)
 		}
 		r.out.WriteStr(formatted[i].Text)
 
 		if i == selected {
 			r.out.SetColor(r.selectedDescriptionTextColor, r.selectedDescriptionBGColor, false)
 		} else {
-			r.out.SetColor(r.descriptionTextColor, r.descriptionBGColor, false)
+			// r.out.SetColor(r.descriptionTextColor, r.descriptionBGColor, false)
+			var descriptionTextColor, descriptionBGColor Color
+			if suggestions[i].DescriptionTextColor != 0 {
+				descriptionTextColor = suggestions[i].DescriptionTextColor
+			} else {
+				descriptionTextColor = r.descriptionTextColor
+			}
+			if suggestions[i].DescriptionBGColor != 0 {
+				descriptionBGColor = suggestions[i].DescriptionBGColor
+			} else {
+				descriptionBGColor = r.descriptionBGColor
+			}
+			r.out.SetColor(descriptionTextColor, descriptionBGColor, false)
 		}
 		r.out.WriteStr(formatted[i].Description)
 
