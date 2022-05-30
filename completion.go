@@ -23,8 +23,12 @@ var (
 
 // Suggest is printed when completing.
 type Suggest struct {
-	Text        string
-	Description string
+	Text                 string
+	Description          string
+	SuggestionTextColor  Color
+	SuggestionBGColor    Color
+	DescriptionTextColor Color
+	DescriptionBGColor   Color
 }
 
 // CompletionManager manages which suggestion is now selected.
